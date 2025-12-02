@@ -1,0 +1,33 @@
+name: Perl Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    name: Run Perl Tests
+    runs-on: ubuntu-latest
+    container:
+      image: arunbear/monkworld-api-deps:0.001001
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify Perl version
+        run: |
+          perl -v
+
+      # Dependencies are pre-installed in the custom image
+      - name: Verify dependencies
+        run: |
+          cpanm --installdeps --notest .
+
+      - name: Run tests
+        env:
+          MONKWORLD_AUTH_TOKEN: ${{ secrets.MONKWORLD_AUTH_TOKEN }}
+        run: |
+          prove -lr
