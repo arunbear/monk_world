@@ -1,5 +1,24 @@
 <!DOCTYPE html>
-<html>
-  <head><title><%= title %></title></head>
-  <body><%= content %></body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="<%= url_for '/assets/css/style.css' %>">
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="navbar-container">
+          <div>
+            <a href="/" class="nav-brand">MonkWorld</a>
+            <a href="/threads" class="nav-link">Threads</a>
+            <a href="/search" class="nav-link">Search</a>
+          </div>
+        </div>
+      </nav>
+
+      <%= content %>
+    </div>
+  </body>
 </html>
