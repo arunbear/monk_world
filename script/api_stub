@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+
+use v5.40;
+use Mojolicious::Lite;
+
+get '/threads' => sub ($c) {
+    my $file = $c->app->home->child('..', 't', 'stub', 'json', 'threads.json');
+    $c->render(
+        format => 'json',
+        data   => $file->slurp
+    );
+};
+
+app->start;

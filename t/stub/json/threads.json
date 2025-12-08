@@ -1,0 +1,114 @@
+{
+  "obfuscated": {
+    "653110": {
+      "author_id": 961,
+      "author_username": "Anonymous Monk",
+      "created_at": "2007-11-26 17:24:47",
+      "reply": {
+        "653345": {
+          "author_id": 632330,
+          "author_username": "goibhniu",
+          "created_at": "2007-11-27 14:18:57",
+          "reply": {
+            "654768": {
+              "author_id": 409850,
+              "author_username": "blazar",
+              "created_at": "2007-12-04 07:59:31",
+              "title": "Re^2: Mandelbrot set"
+            }
+          },
+          "title": "Re: Mandelbrot set"
+        },
+        "654688": {
+          "author_id": 637526,
+          "author_username": "ki6jux",
+          "created_at": "2007-12-03 19:16:42",
+          "reply": {
+            "654770": {
+              "author_id": 409850,
+              "author_username": "blazar",
+              "created_at": "2007-12-04 08:02:38",
+              "title": "Re^2: Mandelbrot set"
+            }
+          },
+          "title": "Re: Mandelbrot set"
+        }
+      },
+      "title": "Mandelbrot set"
+    },
+    "655046": {
+      "author_id": 177458,
+      "author_username": "benizi",
+      "created_at": "2007-12-05 02:37:20",
+      "reply": {
+        "655081": {
+          "author_id": 646951,
+          "author_username": "KurtSchwind",
+          "created_at": "2007-12-05 07:54:43",
+          "title": "Re: Hilbert Curve"
+        },
+        "655088": {
+          "author_id": 632330,
+          "author_username": "goibhniu",
+          "created_at": "2007-12-05 09:10:22",
+          "title": "Re: Hilbert Curve"
+        }
+      },
+      "title": "Hilbert Curve"
+    }
+  },
+  "perlmeditation": {
+    "654593": {
+      "author_id": 418889,
+      "author_username": "bdimych",
+      "created_at": "2007-12-03 10:28:34",
+      "reply": {
+        "654594": {
+          "author_id": 616540,
+          "author_username": "moritz",
+          "created_at": "2007-12-03 10:30:38",
+          "reply": {
+            "654595": {
+              "author_id": 16186,
+              "author_username": "jettero",
+              "created_at": "2007-12-03 10:34:46",
+              "reply": {
+                "655072": {
+                  "author_id": 510391,
+                  "author_username": "Gangabass",
+                  "created_at": "2007-12-05 06:48:30",
+                  "title": "Re^3: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?"
+                }
+              },
+              "title": "Re^2: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?"
+            }
+          },
+          "title": "Re: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?"
+        }
+      },
+      "title": "What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?"
+    },
+    "654677": {
+      "author_id": 635945,
+      "author_username": "jrsimmon",
+      "created_at": "2007-12-03 18:02:02",
+      "reply": {
+        "655033": {
+          "author_id": 29956,
+          "author_username": "thoglette",
+          "created_at": "2007-12-05 00:43:19",
+          "reply": {
+            "655085": {
+              "author_id": 635945,
+              "author_username": "jrsimmon",
+              "created_at": "2007-12-05 08:33:05",
+              "title": "Re^2: RFC: Win32::OLE and Excel's RefreshAll"
+            }
+          },
+          "title": "Re: RFC: Win32::OLE and Excel's RefreshAll"
+        }
+      },
+      "title": "RFC: Win32::OLE and Excel's RefreshAll"
+    }
+  }
+}
