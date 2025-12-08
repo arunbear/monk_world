@@ -1,0 +1,9 @@
+% layout 'default';
+% title 'Threads';
+
+<div class="container">
+  <h1>Recent Threads</h1>
+  % for my $section (sort keys %$threaded) {
+    <h2><%= $section %></h2>
+  % }
+</div>
