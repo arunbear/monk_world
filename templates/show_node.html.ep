@@ -1,4 +1,5 @@
-<a href="https://www.perlmonks.org/?node_id=<%= $id %>"><%= $node->{title} %></a> <%= $node->{author_username} %>
+<a href="https://www.perlmonks.org/?node_id=<%= $id %>"><%= $node->{title} %></a>
+ [<a href="https://www.perlmonks.org/?node_id=<%= $node->{author_id} %>"><%= $node->{author_username} %></a>]
   % if ($node->{reply} && ref $node->{reply} eq 'HASH') {
     <ul>
       % for my $id (sort { $b <=> $a } keys $node->{reply}->%*) {
