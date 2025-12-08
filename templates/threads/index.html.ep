@@ -1,0 +1,19 @@
+% layout 'default';
+% title 'Threads';
+
+<div class="threads-page container">
+  <h1>Recent Threads</h1>
+    % my $count = 1;
+  % for my $section (sort keys %$threaded) {
+    <section class="thread-section" data-section="<%= $section %>">
+      <h2 class="thread-section__heading"><%= $section %></h2>
+      <ul class="thread-list thread-list--top-level">
+        % for my $node_id (sort { $b <=> $a } keys $threaded->{$section}->%*) {
+          <li class="thread thread--top" id="thread-<%= $counter->() %>">
+              %= include 'show_node', id=> $node_id, node=> $threaded->{$section}{$node_id}
+          </li>
+        % }
+      </ul>
+    </section>
+  % }
+</div>

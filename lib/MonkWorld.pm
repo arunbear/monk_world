@@ -19,6 +19,8 @@ sub startup ($self) {
 
     # Normal route to controller
     $r->get('/')->to('Example#welcome');
+    $r->get('/threads')->to('Threads#index');
+    $r->get('/search')->to('Search#index');
 }
 
 sub configure_logging ($self) {

@@ -1,4 +1,6 @@
 ---
+api:
+  url: 'http://localhost:3000'
 logger:
   path: '/var/tmp/monkworld.log'
   level: 'debug'

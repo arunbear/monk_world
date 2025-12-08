@@ -5,6 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   test:
@@ -12,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: arunbear/monkworld-api-deps:0.001001
+      ports:
+        - 3000:3000
 
     steps:
       - name: Checkout code
@@ -26,8 +29,26 @@ jobs:
         run: |
           cpanm --installdeps --notest .
 
+      - name: Make API stub executable
+        run: chmod +x script/api_stub
+
+      - name: Start API stub in background
+        run: |
+          script/api_stub daemon -l http://*:3000 > /tmp/api_stub.log 2>&1 &
+          echo "API stub started in background"
+          sleep 5  # Give the server time to start
+          
+          # Verify the server is running
+          curl -s http://localhost:3000/threads | jq . || (echo "API stub failed to start" && exit 1)
+
       - name: Run tests
         env:
           MONKWORLD_AUTH_TOKEN: ${{ secrets.MONKWORLD_AUTH_TOKEN }}
         run: |
           prove -lr
+
+      - name: Show API stub logs if tests fail
+        if: ${{ failure() }}
+        run: |
+          echo "=== API Stub Logs ==="
+          cat /tmp/api_stub.log || echo "No API stub logs found"
