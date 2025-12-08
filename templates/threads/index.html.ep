@@ -5,5 +5,12 @@
   <h1>Recent Threads</h1>
   % for my $section (sort keys %$threaded) {
     <h2><%= $section %></h2>
+    <ul>
+      % for my $node_id (sort { $b <=> $a } keys $threaded->{$section}->%*) {
+        <li>
+            %= include 'show_node', node=> $threaded->{$section}{$node_id}
+        </li>
+      % }
+    </ul>
   % }
 </div>
