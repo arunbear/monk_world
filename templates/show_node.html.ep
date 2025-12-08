@@ -1,9 +1,9 @@
-<%= $node->{title} %> <%= $node->{author_username} %>
+<a href="https://www.perlmonks.org/?node_id=<%= $id %>"><%= $node->{title} %></a> <%= $node->{author_username} %>
   % if ($node->{reply} && ref $node->{reply} eq 'HASH') {
     <ul>
       % for my $id (sort { $b <=> $a } keys $node->{reply}->%*) {
         <li>
-            %= include 'show_node', node=> $node->{reply}{$id}
+            %= include 'show_node', id=> $id, node=> $node->{reply}{$id}
         </li>
       % }
     </ul>
