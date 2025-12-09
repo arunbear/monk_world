@@ -18,25 +18,90 @@ $t->get_ok('/threads')
 
 # Test sections and threads
 my %threads = (
-    1  => { title => 'Hilbert Curve', author => 'benizi', section => 'obfuscated', replies => [ 2, 3 ] },
-    2  => { title => 'Re: Hilbert Curve', author => 'goibhniu', parent => 1 },
-    3  => { title => 'Re: Hilbert Curve', author => 'KurtSchwind', parent => 1 },
-    4  => { title => 'Mandelbrot set', author => 'Anonymous Monk', section => 'obfuscated', replies => [ 5, 7 ] },
-    5  => { title => 'Re: Mandelbrot set', author => 'ki6jux', parent => 4, replies => [ 6 ] },
-    6  => { title => 'Re^2: Mandelbrot set', author => 'blazar', parent => 5 },
-    7  => { title => 'Re: Mandelbrot set', author => 'goibhniu', parent => 4, replies => [ 8 ] },
-    8  => { title => 'Re^2: Mandelbrot set', author => 'blazar', parent => 7 },
-    9  => { title => "RFC: Win32::OLE and Excel's RefreshAll", author => 'jrsimmon', section => 'perlmeditation', replies => [ 10 ] },
-    10 => { title => "Re: RFC: Win32::OLE and Excel's RefreshAll", author => 'thoglette', parent => 9, replies => [ 11 ] },
-    11 => { title => "Re^2: RFC: Win32::OLE and Excel's RefreshAll", author => 'jrsimmon', parent => 10 },
-    12 => { title => 'What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
-        author    => 'bdimych', section => 'perlmeditation', replies => [ 13 ] },
-    13 => { title => 'Re: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
-        author    => 'moritz', parent => 12, replies => [ 14 ] },
-    14 => { title => 'Re^2: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
-        author    => 'jettero', parent => 13, replies => [ 15 ] },
-    15 => { title => 'Re^3: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
-        author    => 'Gangabass', parent => 14 },
+    1 => {
+        title    => 'Hilbert Curve',
+        author   => 'benizi',
+        section  => 'obfuscated',
+        replies  => [2, 3]
+    },
+    2 => {
+        title    => 'Re: Hilbert Curve',
+        author   => 'goibhniu',
+        parent   => 1
+    },
+    3 => {
+        title    => 'Re: Hilbert Curve',
+        author   => 'KurtSchwind',
+        parent   => 1
+    },
+    4 => {
+        title    => 'Mandelbrot set',
+        author   => 'Anonymous Monk',
+        section  => 'obfuscated',
+        replies  => [5, 7]
+    },
+    5 => {
+        title    => 'Re: Mandelbrot set',
+        author   => 'ki6jux',
+        parent   => 4,
+        replies  => [6]
+    },
+    6 => {
+        title    => 'Re^2: Mandelbrot set',
+        author   => 'blazar',
+        parent   => 5
+    },
+    7 => {
+        title    => 'Re: Mandelbrot set',
+        author   => 'goibhniu',
+        parent   => 4,
+        replies  => [8]
+    },
+    8 => {
+        title    => 'Re^2: Mandelbrot set',
+        author   => 'blazar',
+        parent   => 7
+    },
+    9 => {
+        title    => 'RFC: Win32::OLE and Excel\'s RefreshAll',
+        author   => 'jrsimmon',
+        section  => 'perlmeditation',
+        replies  => [10]
+    },
+    10 => {
+        title    => 'Re: RFC: Win32::OLE and Excel\'s RefreshAll',
+        author   => 'thoglette',
+        parent   => 9,
+        replies  => [11]
+    },
+    11 => {
+        title    => 'Re^2: RFC: Win32::OLE and Excel\'s RefreshAll',
+        author   => 'jrsimmon',
+        parent   => 10
+    },
+    12 => {
+        title    => 'What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
+        author   => 'bdimych',
+        section  => 'perlmeditation',
+        replies  => [13]
+    },
+    13 => {
+        title    => 'Re: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
+        author   => 'moritz',
+        parent   => 12,
+        replies  => [14]
+    },
+    14 => {
+        title    => 'Re^2: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
+        author   => 'jettero',
+        parent   => 13,
+        replies  => [15]
+    },
+    15 => {
+        title    => 'Re^3: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
+        author   => 'Gangabass',
+        parent   => 14
+    },
 );
 
 # Test section headers
