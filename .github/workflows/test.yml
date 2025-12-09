@@ -32,6 +32,10 @@ jobs:
       - name: Make API stub executable
         run: chmod +x script/api_stub
 
+      - name: Install jq
+        run: |
+          apt-get update && apt-get install -y jq
+
       - name: Start API stub in background
         run: |
           script/api_stub daemon -l http://*:3000 > /tmp/api_stub.log 2>&1 &
@@ -39,7 +43,7 @@ jobs:
           sleep 5  # Give the server time to start
           
           # Verify the server is running
-          curl -s http://localhost:3000/threads | jq . || (echo "API stub failed to start" && exit 1)
+          curl -s http://localhost:3000/threads | jq || (echo "API stub failed to start" && exit 1)
 
       - name: Run tests
         env:
