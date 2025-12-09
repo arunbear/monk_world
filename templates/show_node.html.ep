@@ -1,9 +1,9 @@
-<a href="https://www.perlmonks.org/?node_id=<%= $id %>"><%= $node->{title} %></a>
- [<a href="https://www.perlmonks.org/?node_id=<%= $node->{author_id} %>"><%= $node->{author_username} %></a>]
+<a class="thread__title" href="https://www.perlmonks.org/?node_id=<%= $id %>"><%= $node->{title} %></a>
+ [<a class="thread__author" href="https://www.perlmonks.org/?node_id=<%= $node->{author_id} %>"><%= $node->{author_username} %></a>]
   % if ($node->{reply} && ref $node->{reply} eq 'HASH') {
-    <ul>
+    <ul class="thread-list thread-list--replies">
       % for my $id (sort { $b <=> $a } keys $node->{reply}->%*) {
-        <li>
+        <li class="thread">
             %= include 'show_node', id=> $id, node=> $node->{reply}{$id}
         </li>
       % }
