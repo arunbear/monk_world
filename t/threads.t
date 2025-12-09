@@ -8,13 +8,13 @@ my $t = Test::Mojo->new('MonkWorld');
 # Test basic page load and structure
 $t->get_ok('/threads')
     ->status_is(200)
-    ->element_exists('title', 'has title')
-    ->text_is('title' => 'Threads', 'page title contains "Threads"')
-    ->element_exists('h1', 'has main heading')
-    ->text_is('h1' => 'Recent Threads', 'correct main heading')
-    ->element_exists('div.threads-page.container', 'has threads page container')
-    ->element_exists('section.thread-section', 'has at least one thread section')
-    ->element_exists('ul.thread-list--top-level', 'has top-level thread list');
+    ->element_exists('title')
+    ->text_is('title' => 'Threads')
+    ->element_exists('h1')
+    ->text_is('h1' => 'Recent Threads')
+    ->element_exists('div.threads-page.container')
+    ->element_exists('section.thread-section')
+    ->element_exists('ul.thread-list--top-level');
 
 # Test section headers are present with exact text
 $t->text_is('section.thread-section:nth-of-type(1) .thread-section__heading' => 'obfuscated')
