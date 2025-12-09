@@ -11,7 +11,12 @@ sub index ($self) {
     my $threads = $tx->res->json;
     $self->log->debug("Threads: " . Dumper($threads));
 
-    $self->render(threaded => $threads);
+    $self->render(threaded => $threads, counter => make_counter());
+}
+
+sub make_counter () {
+    my $count = 1;
+    return sub { $count++ };
 }
 
 __END__

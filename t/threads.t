@@ -1,127 +1,79 @@
 use v5.40;
 use Mojo::Base -strict;
-use Test::Most tests => 37;
+use Test::Most tests => 59;
 use Test::Mojo;
 
 my $t = Test::Mojo->new('MonkWorld');
 
 # Test basic page load and structure
 $t->get_ok('/threads')
-  ->status_is(200)
-  ->element_exists('title')
-  ->text_is( 'title' => 'Threads' )
-  ->element_exists('h1')
-  ->text_is( 'h1' => 'Recent Threads' )
-  ->element_exists('div.threads-page.container')
-  ->element_exists('section.thread-section')
-  ->element_exists('ul.thread-list--top-level');
+    ->status_is(200)
+    ->element_exists('title')
+    ->text_is('title' => 'Threads')
+    ->element_exists('h1')
+    ->text_is('h1' => 'Recent Threads')
+    ->element_exists('div.threads-page.container')
+    ->element_exists('section.thread-section')
+    ->element_exists('ul.thread-list--top-level');
 
-# Test section headers are present with exact text
-$t->text_is( 'section.thread-section:nth-of-type(1) .thread-section__heading' =>
-      'obfuscated' )
-  ->text_is( 'section.thread-section:nth-of-type(2) .thread-section__heading' =>
-      'perlmeditation' );
+# Test sections and threads
+my %threads = (
+    1 => { title => 'Hilbert Curve', author => 'benizi', section => 'obfuscated', replies => [2, 3] },
+    2 => { title => 'Re: Hilbert Curve', author => 'goibhniu', parent => 1 },
+    3 => { title => 'Re: Hilbert Curve', author => 'KurtSchwind', parent => 1 },
+    4 => { title => 'Mandelbrot set', author => 'Anonymous Monk', section => 'obfuscated', replies => [5, 7] },
+    5 => { title => 'Re: Mandelbrot set', author => 'ki6jux', parent => 4, replies => [6] },
+    6 => { title => 'Re^2: Mandelbrot set', author => 'blazar', parent => 5 },
+    7 => { title => 'Re: Mandelbrot set', author => 'goibhniu', parent => 4, replies => [8] },
+    8 => { title => 'Re^2: Mandelbrot set', author => 'blazar', parent => 7 },
+    9 => { title => 'RFC: Win32::OLE and Excel\'s RefreshAll', author => 'jrsimmon', section => 'perlmeditation', replies => [10] },
+    10 => { title => 'Re: RFC: Win32::OLE and Excel\'s RefreshAll', author => 'thoglette', parent => 9, replies => [11] },
+    11 => { title => 'Re^2: RFC: Win32::OLE and Excel\'s RefreshAll', author => 'jrsimmon', parent => 10 },
+    12 => { title => 'What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
+        author => 'bdimych', section => 'perlmeditation', replies => [13] },
+    13 => { title => 'Re: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
+        author => 'moritz', parent => 12, replies => [14] },
+    14 => { title => 'Re^2: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
+        author => 'jettero', parent => 13, replies => [15] },
+    15 => { title => 'Re^3: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?',
+        author => 'Gangabass', parent => 14 },
+);
 
-# Test thread titles from obfuscated section (top-level only)
-$t->text_is(
-'section.thread-section:nth-of-type(1) ul.thread-list--top-level > li.thread--top:nth-of-type(1) .thread__title'
-      => 'Hilbert Curve' )
-  ->text_is(
-'section.thread-section:nth-of-type(1) ul.thread-list--top-level > li.thread--top:nth-of-type(2) .thread__title'
-      => 'Mandelbrot set' );
+# Test section headers
+$t->text_is('section[data-section="obfuscated"] .thread-section__heading' => 'obfuscated')
+    ->text_is('section[data-section="perlmeditation"] .thread-section__heading' => 'perlmeditation');
 
-# Test thread titles from perlmeditation section (top-level only)
-$t->text_is(
-'section.thread-section:nth-of-type(2) ul.thread-list--top-level > li.thread--top:nth-of-type(1) .thread__title'
-      => 'RFC: Win32::OLE and Excel\'s RefreshAll' )
-  ->text_is(
-'section.thread-section:nth-of-type(2) ul.thread-list--top-level > li.thread--top:nth-of-type(2) .thread__title'
-      => 'What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?'
-  );
+# Test all threads
+for my $id (sort { $a <=> $b } keys %threads) {
+    my $thread = $threads{$id};
+    $t->text_is("#thread-$id .thread__title" => $thread->{title})
+        ->text_is("#thread-$id .thread__author" => $thread->{author});
+}
 
-# Test author usernames are displayed with exact text (top-level threads)
-$t->text_is(
-'section.thread-section:nth-of-type(1) ul.thread-list--top-level > li.thread--top:nth-of-type(1) .thread__author'
-      => 'benizi' )
-  ->text_is(
-'section.thread-section:nth-of-type(1) .thread--top:nth-of-type(2) .thread__author'
-      => 'Anonymous Monk' )
-  ->text_is(
-'section.thread-section:nth-of-type(2) .thread--top:nth-of-type(1) .thread__author'
-      => 'jrsimmon' );
+# Test thread hierarchy
+for my $id (keys %threads) {
+    my $thread = $threads{$id};
+    if (exists $thread->{parent}) {
+        my $parent_id = $thread->{parent};
+        $t->element_exists("#thread-$parent_id .thread-list--replies #thread-$id");
+    }
+}
 
-# Test reply threads (nested content) authors are displayed in order
-# First thread in obfuscated section (Hilbert Curve)
-$t->text_is(
-'section.thread-section:nth-of-type(1) .thread--top:nth-of-type(1) .thread-list--replies > li.thread:nth-of-type(1) .thread__author'
-      => 'goibhniu' )->text_is(
-'section.thread-section:nth-of-type(1) .thread--top:nth-of-type(1) .thread-list--replies > li.thread:nth-of-type(2) .thread__author'
-      => 'KurtSchwind'
+# Test section membership
+for my $id (grep { exists $threads{$_}{section} } keys %threads) {
+    my $section = $threads{$id}{section};
+    $t->element_exists("section[data-section='$section'] #thread-$id");
+}
 
-      # Second thread in obfuscated section (Mandelbrot set)
-      )
-  ->text_is(
-'section.thread-section:nth-of-type(1) .thread--top:nth-of-type(2) .thread-list--replies > li.thread:nth-of-type(1) .thread__author'
-      => 'ki6jux' )
-  ->text_is(
-'section.thread-section:nth-of-type(1) .thread--top:nth-of-type(2) .thread-list--replies > li.thread:nth-of-type(1) .thread-list--replies li.thread .thread__author'
-      => 'blazar' )
-  ->text_is(
-'section.thread-section:nth-of-type(1) .thread--top:nth-of-type(2) .thread-list--replies > li.thread:nth-of-type(2) .thread__author'
-      => 'goibhniu' )
-  ->text_is(
-'section.thread-section:nth-of-type(1) .thread--top:nth-of-type(2) .thread-list--replies > li.thread:nth-of-type(2) .thread-list--replies li.thread .thread__author'
-      => 'blazar'
-
-# First thread in perlmeditation section (RFC: Win32::OLE and Excel's RefreshAll)
-  )
-  ->text_is(
-'section.thread-section:nth-of-type(2) .thread--top:nth-of-type(1) .thread-list--replies > li.thread .thread__author'
-      => 'thoglette' );
-
-# Test nested reply titles with exact text (any depth)
-$t->text_is(
-'section.thread-section:nth-of-type(1) .thread--top:nth-of-type(2) .thread-list--replies > li.thread:nth-of-type(1) .thread__title'
-      => 'Re: Mandelbrot set' )
-  ->text_is(
-'section.thread-section:nth-of-type(1) .thread--top:nth-of-type(2) .thread-list--replies > li.thread:nth-of-type(1) .thread-list--replies li.thread .thread__title'
-      => 'Re^2: Mandelbrot set' )
-  ->text_is(
-'section.thread-section:nth-of-type(1) .thread--top:nth-of-type(1) .thread-list--replies > li.thread:nth-of-type(1) .thread__title'
-      => 'Re: Hilbert Curve' )
-  ->text_is(
-'section.thread-section:nth-of-type(2) .thread--top:nth-of-type(1) .thread-list--replies > li.thread .thread__title'
-      => 'Re: RFC: Win32::OLE and Excel\'s RefreshAll' );
-
-# Test deeper nested replies
-$t->text_is(
-'section.thread-section:nth-of-type(2) .thread--top:nth-of-type(2) .thread-list--replies > li.thread .thread-list--replies > li.thread:nth-of-type(1) .thread__title'
-      => 'Re^2: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?'
-  )
-  ->text_is(
-'section.thread-section:nth-of-type(2) .thread--top:nth-of-type(2) .thread-list--replies > li.thread .thread-list--replies > li.thread:nth-of-type(1) .thread-list--replies li.thread .thread__title'
-      => 'Re^3: What is the (greatest|biggest|largest|supreme|most known) project made (in|with) perl?'
-  )
-  ->text_is(
-'section.thread-section:nth-of-type(2) .thread--top:nth-of-type(1) .thread-list--replies > li.thread .thread-list--replies li.thread .thread__title'
-      => q{Re^2: RFC: Win32::OLE and Excel's RefreshAll} );
-
-# Test list structure for nested threads
-$t->element_exists('li .thread-list--replies')
-  ->element_exists('li .thread-list--replies > li.thread');
-
-# Test total number of sections
-my $sections = $t->tx->res->dom->find('section.thread-section')->size;
-is( $sections, 2 );
+# Test counts
+is($t->tx->res->dom->find('section.thread-section')->size, 2, 'has 2 sections');
 
 # Test top-level threads in obfuscated section
-my $obfuscated_threads = $t->tx->res->dom->find(
-'section.thread-section:nth-of-type(1) ul.thread-list--top-level > li.thread--top'
-)->size;
-is( $obfuscated_threads, 2 );
+my $obfuscated_selector = 'section[data-section="obfuscated"] > .thread-list--top-level > li.thread--top';
+is($t->tx->res->dom->find($obfuscated_selector)->size, 2,
+    'obfuscated section has 2 top-level threads');
 
 # Test top-level threads in perlmeditation section
-my $perlmed_threads = $t->tx->res->dom->find(
-'section.thread-section:nth-of-type(2) ul.thread-list--top-level > li.thread--top'
-)->size;
-is( $perlmed_threads, 2 );
+my $perlmed_selector = 'section[data-section="perlmeditation"] > .thread-list--top-level > li.thread--top';
+is($t->tx->res->dom->find($perlmed_selector)->size, 2,
+    'perlmeditation section has 2 top-level threads');
