@@ -52,8 +52,8 @@ jobs:
         run: |
           prove -lr
 
-      - name: Show API stub logs if tests fail
+      - name: Show API logs if tests fail
         if: ${{ failure() }}
         run: |
-          echo "=== API Stub Logs ==="
-          cat /tmp/api_stub.log || echo "No API stub logs found"
+          echo "=== API Logs ==="
+          cat /var/tmp/monkworld.log || echo "No API logs found"
