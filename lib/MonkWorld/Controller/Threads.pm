@@ -10,6 +10,8 @@ sub index ($self) {
         ->new(
             link_meta => $sitemap->{_links}{get_threads},
             server    => $self->config->{api}{url},
+
+            with_auth_token => false,
         );
 
     my $tx = $self->app->ua->build_tx($req->tx_args);
