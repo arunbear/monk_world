@@ -9,7 +9,7 @@ my $t = Test::Mojo->new('MonkWorld');
 $t->get_ok('/threads')
     ->or(sub {
         my $tx = $t->tx;
-        diag "Failed to GET /threads\nResponse: " . $tx->res->to_string;
+        note "Failed to GET /threads\nResponse: " . $tx->res->to_string;
     })
     ->element_exists('title')
     ->text_is('title' => 'Threads')

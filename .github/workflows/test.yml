@@ -43,7 +43,7 @@ jobs:
           sleep 5  # Give the server time to start
           
           # Verify the server is running
-          curl -s http://localhost:3000/threads | jq || (echo "API stub failed to start" && exit 1)
+          curl -s http://localhost:3000 | jq || (echo "API stub failed to start" && exit 1)
 
       - name: Run tests
         env:
