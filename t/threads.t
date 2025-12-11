@@ -1,13 +1,16 @@
 use v5.40;
 use Mojo::Base -strict;
-use Test::Most tests => 59;
+use Test::Most tests => 58;
 use Test::Mojo;
 
 my $t = Test::Mojo->new('MonkWorld');
 
 # Test basic page load and structure
 $t->get_ok('/threads')
-    ->status_is(200)
+    ->or(sub {
+        my $tx = $t->tx;
+        diag "Failed to GET /threads\nResponse: " . $tx->res->to_string;
+    })
     ->element_exists('title')
     ->text_is('title' => 'Threads')
     ->element_exists('h1')

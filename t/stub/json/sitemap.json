@@ -1,0 +1,66 @@
+{
+  "_links": {
+    "create_monk": {
+      "headers": {
+        "Authorization": "Bearer %s"
+      },
+      "href": "/monk",
+      "json": {
+        "id": "MONK_ID",
+        "username": "MONK_USERNAME"
+      },
+      "method": "POST"
+    },
+    "create_node": {
+      "headers": {
+        "Authorization": "Bearer %s"
+      },
+      "href": "/node",
+      "json": {
+        "author_id": "AUTHOR_ID",
+        "doctext": "NODE_DOCTEXT",
+        "node_id": "NODE_ID",
+        "node_type_id": "NODE_TYPE_ID",
+        "title": "NODE_TITLE"
+      },
+      "method": "POST"
+    },
+    "create_node_type": {
+      "headers": {
+        "Authorization": "Bearer %s"
+      },
+      "href": "/node-type",
+      "json": {
+        "id": "NODE_TYPE_ID",
+        "name": "NODE_TYPE_NAME"
+      },
+      "method": "POST"
+    },
+    "get_all_sections": {
+      "href": "/sections",
+      "method": "GET"
+    },
+    "get_thread": {
+      "form": {},
+      "href": "/thread/",
+      "method": "GET"
+    },
+    "get_threads": {
+      "form": {
+        "days": "1"
+      },
+      "href": "/threads",
+      "method": "GET"
+    },
+    "search": {
+      "form": {
+        "q": "QUERY"
+      },
+      "href": "/search",
+      "method": "GET"
+    },
+    "self": {
+      "href": "/"
+    }
+  }
+}
