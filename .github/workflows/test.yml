@@ -12,7 +12,7 @@ jobs:
     name: Run Perl Tests
     runs-on: ubuntu-latest
     container:
-      image: arunbear/monkworld-api-deps:0.001001
+      image: arunbear/monkworld-api-deps:0.001002
       ports:
         - 3000:3000
 
@@ -48,6 +48,7 @@ jobs:
       - name: Run tests
         env:
           MONKWORLD_AUTH_TOKEN: ${{ secrets.MONKWORLD_AUTH_TOKEN }}
+          PERL5LIB: /app/lib:$PERL5LIB
         run: |
           prove -lr
 
