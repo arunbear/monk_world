@@ -1,0 +1,54 @@
+% layout 'default';
+% title 'Search';
+
+<div class="search-page container">
+  <h1>Search</h1>
+  
+  <form class="search-form" method="GET" action="/search">
+    <div class="search-form__input-group">
+      <input type="text" name="q" class="search-form__input" placeholder="Search threads..." value="<%= param('q') // '' %>" autofocus>
+      <button type="submit" class="search-form__button">Search</button>
+    </div>
+  </form>
+
+  % if (param('q')) {
+    <div class="search-results">
+      <h2 class="search-results__heading">
+        Search results for "<%= param('q') %>"
+        % if ($results && @$results) {
+          <span class="search-results__count">(<%= scalar @$results %> results)</span>
+        % }
+      </h2>
+      
+      % if ($results && @$results) {
+        <table class="search-results__table" style="border-collapse: separate; border-spacing: 20px 10px; font-size: 0.9em;">
+          <thead>
+            <tr>
+              <th class="search-results__header search-results__header--date" style="padding: 8px 12px; text-align: left;">Date</th>
+              <th class="search-results__header search-results__header--author" style="padding: 8px 12px; text-align: left;">Author</th>
+              <th class="search-results__header search-results__header--title" style="padding: 8px 12px; text-align: left;">Title</th>
+              <th class="search-results__header search-results__header--section" style="padding: 8px 12px; text-align: left;">Section</th>
+            </tr>
+          </thead>
+          <tbody>
+            % for my $result (@$results) {
+              <tr class="search-result" id="thread-<%= $result->{id} %>">
+                <td class="search-result__date" style="padding: 8px 12px; vertical-align: top;"><%= $result->{created_at} %></td>
+                <td class="search-result__author" style="padding: 8px 12px; vertical-align: top;"><%= $result->{author_username} %></td>
+                <td class="search-result__title" style="padding: 8px 12px; vertical-align: top;">
+                  <a href="/node/<%= $result->{id} %>"><%= $result->{title} %></a>
+                </td>
+                <td class="search-result__section" style="padding: 8px 12px; vertical-align: top;"><%= $result->{section_name} %></td>
+              </tr>
+            % }
+          </tbody>
+        </table>
+      % } else {
+        <div class="search-results__empty">
+          <p>No results found for "<%= param('q') %>".</p>
+          <p>Try different keywords or check your spelling.</p>
+        </div>
+      % }
+    </div>
+  % }
+</div>

@@ -1,0 +1,402 @@
+[
+  {
+    "author_id": 890813,
+    "author_username": "cavac",
+    "created_at": "2021-06-11 17:08:12",
+    "id": 11133799,
+    "section_name": "perlquestion",
+    "title": "Re: Replacing crypt() for password login via a digest - looking for stronger alternative"
+  },
+  {
+    "author_id": 502759,
+    "author_username": "dallase",
+    "created_at": "2014-12-15 14:35:58",
+    "id": 1110400,
+    "section_name": "perlquestion",
+    "title": "Crypt::Eksblowfish::Bcrypt doesnt support 2y?"
+  },
+  {
+    "author_id": 70929,
+    "author_username": "atcroft",
+    "created_at": "2019-08-14 15:20:12",
+    "id": 11104473,
+    "section_name": "perlquestion",
+    "title": "Re: use Crypt::Eksblowfish::Bcrypt to create a password the same as password_hash in PHP"
+  },
+  {
+    "author_id": 1127163,
+    "author_username": "EnochRoot",
+    "created_at": "2015-05-19 14:42:34",
+    "id": 1127168,
+    "section_name": "perlquestion",
+    "title": "sanitize user input for system() call"
+  },
+  {
+    "author_id": 321512,
+    "author_username": "andreas1234567",
+    "created_at": "2012-06-12 03:15:45",
+    "id": 975703,
+    "section_name": "perlquestion",
+    "title": "Adjust bcrypt cost to prevent future password hash attacks"
+  },
+  {
+    "author_id": 131741,
+    "author_username": "zentara",
+    "created_at": "2008-12-21 15:59:29",
+    "id": 731919,
+    "section_name": "sourcecode",
+    "title": "Blowfish based password hashing"
+  },
+  {
+    "author_id": 961,
+    "author_username": "Anonymous Monk",
+    "created_at": "2012-06-12 06:38:58",
+    "id": 975746,
+    "section_name": "perlquestion",
+    "title": "Re: Adjust bcrypt cost to prevent future password hash attacks"
+  },
+  {
+    "author_id": 321512,
+    "author_username": "andreas1234567",
+    "created_at": "2012-06-12 09:03:18",
+    "id": 975794,
+    "section_name": "perlquestion",
+    "title": "Re^2: Adjust bcrypt cost to prevent future password hash attacks"
+  },
+  {
+    "author_id": 248054,
+    "author_username": "Your Mother",
+    "created_at": "2019-05-31 16:42:55",
+    "id": 11100812,
+    "section_name": "perlquestion",
+    "title": "Re^3: understand crypt"
+  },
+  {
+    "author_id": 248054,
+    "author_username": "Your Mother",
+    "created_at": "2019-08-14 12:53:43",
+    "id": 11104465,
+    "section_name": "perlquestion",
+    "title": "Re: use Crypt::Eksblowfish::Bcrypt to create a password the same as password_hash in PHP"
+  },
+  {
+    "author_id": 961,
+    "author_username": "Anonymous Monk",
+    "created_at": "2012-06-08 00:30:33",
+    "id": 975078,
+    "section_name": "perlquestion",
+    "title": "Problem with Crypt::Eksblowfish::Bcrypt under mod_perl"
+  },
+  {
+    "author_id": 248054,
+    "author_username": "Your Mother",
+    "created_at": "2019-08-14 12:13:19",
+    "id": 11104463,
+    "section_name": "perlquestion",
+    "title": "Re: use Crypt::Eksblowfish::Bcrypt to create a password the same as password_hash in PHP"
+  },
+  {
+    "author_id": 961,
+    "author_username": "Anonymous Monk",
+    "created_at": "2012-06-12 09:30:45",
+    "id": 975806,
+    "section_name": "perlquestion",
+    "title": "Re^3: Adjust bcrypt cost to prevent future password hash attacks"
+  },
+  {
+    "author_id": 1057415,
+    "author_username": "oiskuu",
+    "created_at": "2015-05-19 16:29:20",
+    "id": 1127179,
+    "section_name": "perlquestion",
+    "title": "Re: sanitize user input for system() call"
+  },
+  {
+    "author_id": 961,
+    "author_username": "Anonymous Monk",
+    "created_at": "2012-06-12 04:52:46",
+    "id": 975727,
+    "section_name": "perlquestion",
+    "title": "Re^3: Adjust bcrypt cost to prevent future password hash attacks"
+  },
+  {
+    "author_id": 859678,
+    "author_username": "DaisyLou",
+    "created_at": "2019-08-14 11:38:30",
+    "id": 11104453,
+    "section_name": "perlquestion",
+    "title": "use Crypt::Eksblowfish::Bcrypt to create a password the same as password_hash in PHP"
+  },
+  {
+    "author_id": 163790,
+    "author_username": "esper",
+    "created_at": "2009-03-28 20:06:21",
+    "id": 753921,
+    "section_name": "perlquestion",
+    "title": "Re: Storing encrypted passwords and validating"
+  },
+  {
+    "author_id": 241598,
+    "author_username": "holli",
+    "created_at": "2019-05-31 11:13:59",
+    "id": 11100796,
+    "section_name": "perlquestion",
+    "title": "Re^2: understand crypt"
+  },
+  {
+    "author_id": 375088,
+    "author_username": "radiantmatrix",
+    "created_at": "2008-04-01 11:02:29",
+    "id": 677770,
+    "section_name": "perlquestion",
+    "title": "Re: encryption and decryption"
+  },
+  {
+    "author_id": 502759,
+    "author_username": "dallase",
+    "created_at": "2014-12-16 00:21:35",
+    "id": 1110450,
+    "section_name": "perlquestion",
+    "title": "Re^2: Crypt::Eksblowfish::Bcrypt doesnt support 2y?"
+  },
+  {
+    "author_id": 203787,
+    "author_username": "dhoss",
+    "created_at": "2012-01-25 15:22:16",
+    "id": 949958,
+    "section_name": "perlquestion",
+    "title": "Re^10: Password strength calculation"
+  },
+  {
+    "author_id": 1009333,
+    "author_username": "BlueSaxman",
+    "created_at": "2015-01-04 00:03:56",
+    "id": 1112095,
+    "section_name": "perlquestion",
+    "title": "Dividing a string into multiple substrings of different length"
+  },
+  {
+    "author_id": 960839,
+    "author_username": "Ransom",
+    "created_at": "2012-06-12 09:41:59",
+    "id": 975808,
+    "section_name": "perlquestion",
+    "title": "Re^2: Adjust bcrypt cost to prevent future password hash attacks"
+  },
+  {
+    "author_id": 961,
+    "author_username": "Anonymous Monk",
+    "created_at": "2012-06-12 09:47:00",
+    "id": 975809,
+    "section_name": "perlquestion",
+    "title": "Re^2: Adjust bcrypt cost to prevent future password hash attacks"
+  },
+  {
+    "author_id": 203787,
+    "author_username": "dhoss",
+    "created_at": "2012-01-25 12:42:52",
+    "id": 949936,
+    "section_name": "perlquestion",
+    "title": "Re^8: Password strength calculation"
+  },
+  {
+    "author_id": 961,
+    "author_username": "Anonymous Monk",
+    "created_at": "2018-04-13 19:09:53",
+    "id": 1212835,
+    "section_name": "perlquestion",
+    "title": "DBIx and MySQL's binary data type"
+  },
+  {
+    "author_id": 321512,
+    "author_username": "andreas1234567",
+    "created_at": "2012-06-12 04:24:04",
+    "id": 975710,
+    "section_name": "perlquestion",
+    "title": "Re^2: Adjust bcrypt cost to prevent future password hash attacks"
+  },
+  {
+    "author_id": 1130276,
+    "author_username": "1nickt",
+    "created_at": "2019-08-14 11:54:08",
+    "id": 11104456,
+    "section_name": "perlquestion",
+    "title": "Re: use Crypt::Eksblowfish::Bcrypt to create a password the same as password_hash in PHP"
+  },
+  {
+    "author_id": 1035446,
+    "author_username": "zork42",
+    "created_at": "2013-08-23 23:49:28",
+    "id": 1050755,
+    "section_name": "perlquestion",
+    "title": "Re^3: Digest::MD5 variation problem?"
+  },
+  {
+    "author_id": 1001958,
+    "author_username": "karlgoethebier",
+    "created_at": "2013-01-18 06:45:15",
+    "id": 1014037,
+    "section_name": "perlquestion",
+    "title": "Re: Lightweight Perl CMS"
+  },
+  {
+    "author_id": 961,
+    "author_username": "Anonymous Monk",
+    "created_at": "2013-02-07 01:33:41",
+    "id": 1017572,
+    "section_name": "perlquestion",
+    "title": "Re: Encryption and Decryption using RSA"
+  },
+  {
+    "author_id": 747201,
+    "author_username": "afoken",
+    "created_at": "2015-07-23 14:03:31",
+    "id": 1136049,
+    "section_name": "perlquestion",
+    "title": "Re: Getting issue with encrypt / decrypt"
+  },
+  {
+    "author_id": 248054,
+    "author_username": "Your Mother",
+    "created_at": "2015-10-12 10:31:27",
+    "id": 1144538,
+    "section_name": "perlmeditation",
+    "title": "Re^2: Crash-Test Dummies: A Few Thoughts on Website Testing"
+  },
+  {
+    "author_id": 248054,
+    "author_username": "Your Mother",
+    "created_at": "2016-03-04 10:22:53",
+    "id": 1156821,
+    "section_name": "perlmeditation",
+    "title": "Re^6: Mind the meta! (case, DBs)"
+  },
+  {
+    "author_id": 961,
+    "author_username": "Anonymous Monk",
+    "created_at": "2016-03-04 11:09:44",
+    "id": 1156825,
+    "section_name": "perlmeditation",
+    "title": "Re^7: Mind the meta! (case, DBs)"
+  },
+  {
+    "author_id": 747201,
+    "author_username": "afoken",
+    "created_at": "2017-01-22 05:47:43",
+    "id": 1180110,
+    "section_name": "perlmeditation",
+    "title": "Anger Management"
+  },
+  {
+    "author_id": 248054,
+    "author_username": "Your Mother",
+    "created_at": "2018-04-14 02:44:21",
+    "id": 1212854,
+    "section_name": "perlquestion",
+    "title": "Re: DBIx and MySQL's binary data type"
+  },
+  {
+    "author_id": 859678,
+    "author_username": "DaisyLou",
+    "created_at": "2019-08-14 12:08:56",
+    "id": 11104458,
+    "section_name": "perlquestion",
+    "title": "Re^2: use Crypt::Eksblowfish::Bcrypt to create a password the same as password_hash in PHP"
+  },
+  {
+    "author_id": 248054,
+    "author_username": "Your Mother",
+    "created_at": "2020-03-23 17:00:39",
+    "id": 11114580,
+    "section_name": "perlquestion",
+    "title": "Re: RFC / Audit: Mojo Login Example"
+  },
+  {
+    "author_id": 830549,
+    "author_username": "haukex",
+    "created_at": "2020-03-25 02:53:47",
+    "id": 11114628,
+    "section_name": "perlquestion",
+    "title": "Re^2: RFC / Audit: Mojo Login Example"
+  },
+  {
+    "author_id": 961,
+    "author_username": "Anonymous Monk",
+    "created_at": "2020-04-05 14:18:58",
+    "id": 11115097,
+    "section_name": "perlquestion",
+    "title": "Re: COVID-19 data analytics, cryptography, and some things you should know"
+  },
+  {
+    "author_id": 830549,
+    "author_username": "haukex",
+    "created_at": "2021-06-12 07:10:07",
+    "id": 11133802,
+    "section_name": "perlquestion",
+    "title": "Re: Replacing crypt() for password login via a digest - looking for stronger alternative"
+  },
+  {
+    "author_id": 131741,
+    "author_username": "zentara",
+    "created_at": "2008-12-02 10:23:05",
+    "id": 727445,
+    "section_name": "perlquestion",
+    "title": "Re^5: Reverse MD5"
+  },
+  {
+    "author_id": 961,
+    "author_username": "Anonymous Monk",
+    "created_at": "2014-12-15 15:50:09",
+    "id": 1110404,
+    "section_name": "perlquestion",
+    "title": "Re: Crypt::Eksblowfish::Bcrypt doesnt support 2y?"
+  },
+  {
+    "author_id": 20250,
+    "author_username": "pemungkah",
+    "created_at": "2009-07-31 16:57:41",
+    "id": 784996,
+    "section_name": "monkdiscuss",
+    "title": "Opportunity to excel"
+  },
+  {
+    "author_id": 248054,
+    "author_username": "Your Mother",
+    "created_at": "2009-07-31 17:55:18",
+    "id": 785011,
+    "section_name": "monkdiscuss",
+    "title": "Re: Opportunity to excel"
+  },
+  {
+    "author_id": 512341,
+    "author_username": "leocharre",
+    "created_at": "2009-11-25 14:25:51",
+    "id": 809409,
+    "section_name": "perlquestion",
+    "title": "Re: Password Protect Excel File"
+  },
+  {
+    "author_id": 961,
+    "author_username": "Anonymous Monk",
+    "created_at": "2012-02-13 09:07:34",
+    "id": 953465,
+    "section_name": "perlquestion",
+    "title": "Re^2: Authen::Passphrase::BlowfishCrypt - Create user."
+  },
+  {
+    "author_id": 799377,
+    "author_username": "falseazure",
+    "created_at": "2011-02-02 01:28:17",
+    "id": 885670,
+    "section_name": "perlquestion",
+    "title": "Re^2: How is Catalyst storing my password salts??"
+  },
+  {
+    "author_id": 636534,
+    "author_username": "Perlbotics",
+    "created_at": "2011-09-05 11:30:31",
+    "id": 924262,
+    "section_name": "perlquestion",
+    "title": "Re^5: pure Perl SHA-256 crypt()"
+  }
+]
