@@ -1,7 +1,7 @@
 package MonkWorld::Controller::Threads;
 use v5.40;
 use Mojo::Base 'Mojolicious::Controller', -signatures;
-use MonkWorld::API::Request;
+use MonkWorld::API::Request 0.001_003;
 use Data::Dumper;
 
 sub index ($self) {

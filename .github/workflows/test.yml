@@ -12,7 +12,7 @@ jobs:
     name: Run Perl Tests
     runs-on: ubuntu-latest
     container:
-      image: arunbear/monkworld-api-deps:0.001002
+      image: arunbear/monkworld-api-deps:0.001003
       ports:
         - 3000:3000
 
@@ -41,7 +41,7 @@ jobs:
           script/api_stub daemon -l http://*:3000 > /tmp/api_stub.log 2>&1 &
           echo "API stub started in background"
           sleep 5  # Give the server time to start
-          
+          # ... then
           # Verify the server is running
           curl -s http://localhost:3000 | jq || (echo "API stub failed to start" && exit 1)
 
@@ -52,8 +52,8 @@ jobs:
         run: |
           prove -lr
 
-      - name: Show API logs if tests fail
+      - name: Show logs if tests fail
         if: ${{ failure() }}
         run: |
           echo "=== API Logs ==="
-          cat /var/tmp/monkworld.log || echo "No API logs found"
+          cat /var/tmp/monkworld.log || echo "No logs found"
