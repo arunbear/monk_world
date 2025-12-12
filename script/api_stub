@@ -19,4 +19,12 @@ get '/threads' => sub ($c) {
     );
 };
 
+get '/search' => sub ($c) {
+    my $file = $c->app->home->child('..', 't', 'stub', 'json', 'search.json');
+    $c->render(
+        format => 'json',
+        data   => $file->slurp
+    );
+};
+
 app->start;
