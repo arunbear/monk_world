@@ -1,0 +1,39 @@
+% layout 'default';
+% title $node->{title};
+
+<div class="node-page container">
+  <div class="node-header">
+    <h1 class="node__title">
+      <a href="https://www.perlmonks.org/?node_id=<%= $node_id %>" target="_blank"><%= $node->{title} %></a>
+    </h1>
+    <div class="node__meta">
+      <span class="node__author">
+        by <a href="https://www.perlmonks.org/?node_id=<%= $node->{author_id} %>" target="_blank"><%= $node->{author_username} %></a>
+      </span>
+      % if ($node->{created_at}) {
+        <span class="node__date">on <%= $node->{created_at} %></span>
+      % }
+    </div>
+  </div>
+
+  <div class="node-content">
+    % if ($node->{doctext}) {
+      <div class="node__text">
+        %== process_doctext($node->{doctext})
+      </div>
+    % }
+  </div>
+
+  % if ($node->{reply} && ref $node->{reply} eq 'HASH') {
+    <div class="node-replies">
+      <h2>Replies</h2>
+      <ul class="thread-list thread-list--replies">
+        % for my $id (sort { $b <=> $a } keys $node->{reply}->%*) {
+          <li class="thread" id="thread-<%= $id %>">
+            %= include 'node/reply', id => $id, node => $node->{reply}{$id}
+          </li>
+        % }
+      </ul>
+    </div>
+  % }
+</div>

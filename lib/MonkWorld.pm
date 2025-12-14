@@ -3,6 +3,7 @@ package MonkWorld;
 our $VERSION = 0.001_001;
 use v5.40;
 use Mojo::Base 'Mojolicious';
+use MonkWorld::TextProcessor;
 
 # This method will run once at server start
 sub startup ($self) {
@@ -17,10 +18,15 @@ sub startup ($self) {
     # Router
     my $r = $self->routes;
 
+    $self->helper(process_doctext => sub ($self, $text) {
+        return MonkWorld::TextProcessor::apply_custom_markup($text);
+    });
+
     # Normal route to controller
     $r->get('/')->to('Example#welcome');
     $r->get('/threads')->to('Threads#index');
     $r->get('/search')->to('Search#index');
+    $r->get('/node/:id', [id => qr/\d+/])->to('Node#show');
 }
 
 sub configure_logging ($self) {

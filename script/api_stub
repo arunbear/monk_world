@@ -27,4 +27,12 @@ get '/search' => sub ($c) {
     );
 };
 
+get '/thread/:id' => sub ($c) {
+    my $file = $c->app->home->child('..', 't', 'stub', 'json', 'node.json');
+    $c->render(
+        format => 'json',
+        data   => $file->slurp
+    );
+};
+
 app->start;
