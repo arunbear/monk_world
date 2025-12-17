@@ -3,6 +3,7 @@ package MonkWorld;
 our $VERSION = 0.001_001;
 use v5.40;
 use Mojo::Base 'Mojolicious';
+use MonkWorld::API::Request 0.001_004; # centralize version pinning
 use MonkWorld::TextProcessor;
 
 # This method will run once at server start

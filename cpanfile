@@ -6,7 +6,6 @@ requires 'Mojolicious', '9.42';
 requires 'namespace::autoclean', '0.31';
 requires 'Role::Tiny', '2.002004';
 requires 'Type::Tiny', '2.008004';
-requires 'MonkWorld::API::Request', '0.001_004';
 
 on 'test' => sub {
   requires 'Test::Class::Most', '0.08';
