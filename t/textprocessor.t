@@ -1,5 +1,5 @@
 use v5.40;
-use Test::Most tests => 16;
+use Test::Most tests => 18;
 use MonkWorld::TextProcessor 'apply_custom_markup';
 
 subtest 'wikipedia links are converted' => sub {
@@ -7,7 +7,7 @@ subtest 'wikipedia links are converted' => sub {
         apply_custom_markup('[wp://Web_template_system]'),
         '<a href="https://en.wikipedia.org/wiki/Web_template_system">Web_template_system</a>'
     );
-    
+
     is(
         apply_custom_markup('[wp://Web_template_system|Web Templates]'),
         '<a href="https://en.wikipedia.org/wiki/Web_template_system">Web Templates</a>'
@@ -26,7 +26,7 @@ subtest 'cpan module links are converted' => sub {
         apply_custom_markup('[mod://HTML::Template]'),
         '<a href="https://metacpan.org/pod/HTML::Template">HTML::Template</a>'
     );
-    
+
     is(
         apply_custom_markup('[mod://HTML::Template|HTML Template Module]'),
         '<a href="https://metacpan.org/pod/HTML::Template">HTML Template Module</a>'
@@ -38,12 +38,12 @@ subtest 'perldoc links are converted' => sub {
         apply_custom_markup('[doc://perlfunc]'),
         '<a href="https://perldoc.perl.org/perlfunc">perlfunc</a>'
     );
-    
+
     is(
         apply_custom_markup('[doc://perlop|Perl Operators]'),
         '<a href="https://perldoc.perl.org/perlop">Perl Operators</a>'
     );
-    
+
     is(
         apply_custom_markup('See [doc://perlre|Regular Expressions] for details'),
         'See <a href="https://perldoc.perl.org/perlre">Regular Expressions</a> for details'
@@ -118,12 +118,12 @@ subtest 'perlmonks id links are converted' => sub {
         apply_custom_markup('[id://1153804|Wikisyntax for the Monastery]'),
         '<a href="https://perlmonks.org/?node_id=1153804">Wikisyntax for the Monastery</a>'
     );
-    
+
     is(
         apply_custom_markup('[id://12345]'),
         '<a href="https://perlmonks.org/?node_id=12345">12345</a>'
     );
-    
+
     is(
         apply_custom_markup('[id://999999|This node]'),
         '<a href="https://perlmonks.org/?node_id=999999">This node</a>'
@@ -135,12 +135,12 @@ subtest 'generic http links are converted' => sub {
         apply_custom_markup('[https://www.example.com|Example Site]'),
         '<a href="https://www.example.com">Example Site</a>'
     );
-    
+
     is(
         apply_custom_markup('[http://perl.org]'),
         '<a href="http://perl.org">http://perl.org</a>'
     );
-    
+
     is(
         apply_custom_markup('[https://github.com/user/repo|my repository]'),
         '<a href="https://github.com/user/repo">my repository</a>'
@@ -152,17 +152,17 @@ subtest 'perlmonks node links are converted' => sub {
         apply_custom_markup('[foo]'),
         '<a href="https://www.perlmonks.org/?node=foo">foo</a>'
     );
-    
+
     is(
         apply_custom_markup('[Wikisyntax]'),
         '<a href="https://www.perlmonks.org/?node=Wikisyntax">Wikisyntax</a>'
     );
-    
+
     is(
         apply_custom_markup('See [SOPW] for more information'),
         'See <a href="https://www.perlmonks.org/?node=SOPW">SOPW</a> for more information'
     );
-    
+
     # Ensure [foo] pattern doesn't interfere with other patterns
     is(
         apply_custom_markup('[wp://Test] and [mod://Moose] and [foo]'),
@@ -170,4 +170,16 @@ subtest 'perlmonks node links are converted' => sub {
     );
 };
 
-done_testing();
+subtest 'links are not expanded in code blocks' => sub {
+    is(
+        apply_custom_markup(q{<code>my $s = 'hello'; say $s =~ /[\w]/;</code>}),
+        q{<pre>my $s = 'hello'; say $s =~ /[\w]/;</pre>}
+    );
+};
+
+subtest 'links are not expanded in c tags' => sub {
+    is(
+        apply_custom_markup(q{<c>my $s = 'hello'; say $s =~ /[\w]/;</c>}),
+        q{<pre>my $s = 'hello'; say $s =~ /[\w]/;</pre>}
+    );
+};

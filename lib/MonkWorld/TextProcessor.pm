@@ -6,6 +6,36 @@ our @EXPORT_OK = qw(apply_custom_markup);
 sub apply_custom_markup ($text) {
     return '' unless defined $text;
 
+    # Process content outside code blocks only
+    $text = _process_text_with_code_blocks($text);
+
+    return $text;
+}
+
+sub _process_text_with_code_blocks ($text) {
+    my $result = '';
+
+    # Process text while preserving code blocks (both <code> and <c> tags)
+    while ($text =~ m{(.*?)(<(code|c)>(.*?)</\3>)(.*)}is) {
+        my ($before, $code_block, $tag_type, $content, $after) = ($1, $2, $3, $4, $5);
+
+        # Process text before code block
+        $result .= _process_markup($before);
+
+        # Convert code block to <pre> tag with preserved content
+        $result .= "<pre>$content</pre>";
+
+        # Continue with remaining text
+        $text = $after;
+    }
+
+    # Process any remaining text (after the last code block)
+    $result .= _process_markup($text);
+
+    return $result;
+}
+
+sub _process_markup ($text) {
     $text = _process_wp_links($text);
 
     # Convert [mod://Module_Name|text] to CPAN links
