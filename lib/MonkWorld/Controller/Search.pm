@@ -1,7 +1,7 @@
 package MonkWorld::Controller::Search;
 use v5.40;
 use Mojo::Base 'Mojolicious::Controller', -signatures;
-use MonkWorld::API::Request 0.001_003;
+use MonkWorld::API::Request;
 use Data::Dump qw(dump);
 
 sub index ($self) {
