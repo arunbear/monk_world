@@ -12,7 +12,7 @@ jobs:
     name: Run Perl Tests
     runs-on: ubuntu-latest
     container:
-      image: arunbear/monkworld-api-deps:0.001003
+      image: arunbear/monkworld-api-deps:0.001004
       ports:
         - 3000:3000
 
