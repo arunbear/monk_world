@@ -46,8 +46,12 @@ sub _process_markup ($text) {
     $text =~ s{\[cpan://([^\|\]]+)\|([^\]]+)\]}{<a href="https://metacpan.org/pod/$1">$2</a>}gi;
     $text =~ s{\[cpan://([^\]]+)\]}{<a href="https://metacpan.org/pod/$1">$1</a>}gi;
 
+    # Convert [href://url|text] to generic links
+    $text =~ s{\[href://([^\|\]]+)\|([^\]]+)\]}{<a href="$1">$2</a>}gi;
+    $text =~ s{\[href://([^\]]+)\]}{<a href="$1">$1</a>}gi;
+
     # Convert [doc://foo|text] to perldoc links
-    $text =~ s{\[doc://([^\|\]]+)\|([^\]]+)\]}{<a href="https://perldoc.perl.org/$1">$2</a>}g;
+    $text =~ s{\[doc://([^\|\]]+)\|([^\]]+)\]}{<a href="https://perldoc.perl.org/$1">$2</a>}gi;
     $text =~ s{\[doc://([^\]]+)\]}{<a href="https://perldoc.perl.org/$1">$1</a>}g;
 
     # Convert [id://number|text] to PerlMonks links
@@ -55,8 +59,8 @@ sub _process_markup ($text) {
     $text =~ s{\[id://(\d+)\]}{<a href="https://perlmonks.org/?node_id=$1">$1</a>}g;
 
     # Convert [http://url|text] to generic links
-    $text =~ s{\[(https?://[^\|\]]+)\|([^\]]+)\]}{<a href="$1">$2</a>}g;
-    $text =~ s{\[(https?://[^\]]+)\]}{<a href="$1">$1</a>}g;
+    $text =~ s{\[(https?://[^\|\]]+)\|([^\]]+)\]}{<a href="$1">$2</a>}gi;
+    $text =~ s{\[(https?://[^\]]+)\]}{<a href="\L$1">$1</a>}gi;
 
     # Convert [foo] to PerlMonks node links (must be last to avoid conflicts)
     $text =~ s{\[([^\]:/]+)\]}{<a href="https://www.perlmonks.org/?node=$1">$1</a>}g;

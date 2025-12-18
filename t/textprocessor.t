@@ -1,5 +1,5 @@
 use v5.40;
-use Test::Most tests => 18;
+use Test::Most tests => 20;
 use MonkWorld::TextProcessor 'apply_custom_markup';
 
 subtest 'wikipedia links are converted' => sub {
@@ -40,6 +40,30 @@ subtest 'cpan module links are converted' => sub {
     is(
         apply_custom_markup('[cpan://HTML::Template|HTML Template Module]'),
         '<a href="https://metacpan.org/pod/HTML::Template">HTML Template Module</a>'
+    );
+};
+
+subtest 'http links are converted' => sub {
+    is(
+        apply_custom_markup('[HTTPs://example.com]'),
+        '<a href="https://example.com">https://example.com</a>'
+    );
+
+    is(
+        apply_custom_markup('[https://example.com|An example]'),
+        '<a href="https://example.com">An example</a>'
+    );
+};
+
+subtest 'generic links are converted' => sub {
+    is(
+        apply_custom_markup('[href://https://example.com]'),
+        '<a href="https://example.com">https://example.com</a>'
+    );
+
+    is(
+        apply_custom_markup('[href://https://example.com|An example]'),
+        '<a href="https://example.com">An example</a>'
     );
 };
 
