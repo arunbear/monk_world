@@ -16,14 +16,13 @@ sub startup ($self) {
     $self->configure_logging;
     $self->configure_secrets;
 
-    # Router
-    my $r = $self->routes;
-
     $self->helper(process_doctext => sub ($self, $text) {
         return MonkWorld::TextProcessor::apply_custom_markup($text);
     });
 
-    # Normal route to controller
+    # Routing
+    my $r = $self->routes;
+
     $r->get('/')->to('Example#welcome');
     $r->get('/threads')->to('Threads#index');
     $r->get('/search')->to('Search#index');
@@ -43,4 +42,8 @@ sub configure_secrets ($self) {
     else {
         $self->log->warn('MONKWORLD_SECRETS environment variable is not set');
     }
+}
+
+sub api_url ($self) {
+    return $ENV{MONKWORLD_API_URL} // $self->config->{api}{url};
 }
