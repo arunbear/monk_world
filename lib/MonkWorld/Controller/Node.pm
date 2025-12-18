@@ -3,15 +3,18 @@ use v5.40;
 use Mojo::Base 'Mojolicious::Controller', -signatures;
 use MonkWorld::API::Request;
 use Data::Dumper;
+use Role::Tiny::With;
+
+with 'MonkWorld::Role::ApiClient';
 
 sub show ($self) {
     my $node_id = $self->stash('id');
 
-    my $sitemap = get_sitemap($self);
+    my $sitemap = $self->get_sitemap;
     my $req = MonkWorld::API::Request
         ->new(
             link_meta => $sitemap->{_links}{get_thread},
-            server    => $self->config->{api}{url},
+            server    => $self->api_url,
             with_auth_token => false,
         )
         ->add_uri_segment($node_id);
@@ -29,17 +32,4 @@ sub show ($self) {
     $self->log->debug("Node: " . Dumper($node));
 
     $self->render(node => $node, node_id => $node_id);
-}
-
-sub get_sitemap ($self) {
-    state $sitemap = do {
-        my $res = $self->app->ua->get($self->config->{api}{url})->result;
-        if (!$res->is_success) {
-            my $message = "Failed to fetch sitemap: " . $res->message;
-            $self->log->error($message);
-            die $message;
-        }
-        $res->json;
-    };
-    return $sitemap;
 }

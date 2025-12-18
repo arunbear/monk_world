@@ -43,7 +43,3 @@ sub configure_secrets ($self) {
         $self->log->warn('MONKWORLD_SECRETS environment variable is not set');
     }
 }
-
-sub api_url ($self) {
-    return $ENV{MONKWORLD_API_URL} // $self->config->{api}{url};
-}
