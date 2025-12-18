@@ -31,6 +31,16 @@ subtest 'cpan module links are converted' => sub {
         apply_custom_markup('[mod://HTML::Template|HTML Template Module]'),
         '<a href="https://metacpan.org/pod/HTML::Template">HTML Template Module</a>'
     );
+
+    is(
+        apply_custom_markup('[cpan://HTML::Template]'),
+        '<a href="https://metacpan.org/pod/HTML::Template">HTML::Template</a>'
+    );
+
+    is(
+        apply_custom_markup('[cpan://HTML::Template|HTML Template Module]'),
+        '<a href="https://metacpan.org/pod/HTML::Template">HTML Template Module</a>'
+    );
 };
 
 subtest 'perldoc links are converted' => sub {

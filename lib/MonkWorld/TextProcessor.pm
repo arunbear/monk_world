@@ -42,6 +42,10 @@ sub _process_markup ($text) {
     $text =~ s{\[(?:meta)?mod://([^\|\]]+)\|([^\]]+)\]}{<a href="https://metacpan.org/pod/$1">$2</a>}gi;
     $text =~ s{\[(?:meta)?mod://([^\]]+)\]}{<a href="https://metacpan.org/pod/$1">$1</a>}gi;
 
+    # Convert [cpan://Module_Name|text] to CPAN links
+    $text =~ s{\[cpan://([^\|\]]+)\|([^\]]+)\]}{<a href="https://metacpan.org/pod/$1">$2</a>}gi;
+    $text =~ s{\[cpan://([^\]]+)\]}{<a href="https://metacpan.org/pod/$1">$1</a>}gi;
+
     # Convert [doc://foo|text] to perldoc links
     $text =~ s{\[doc://([^\|\]]+)\|([^\]]+)\]}{<a href="https://perldoc.perl.org/$1">$2</a>}g;
     $text =~ s{\[doc://([^\]]+)\]}{<a href="https://perldoc.perl.org/$1">$1</a>}g;
