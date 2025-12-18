@@ -24,6 +24,7 @@ sub startup ($self) {
     my $r = $self->routes;
 
     $r->get('/')->to('Example#welcome');
+    $r->get('/health')->to('Example#health');
     $r->get('/threads')->to('Threads#index');
     $r->get('/search')->to('Search#index');
     $r->get('/node/:id', [id => qr/\d+/])->to('Node#show');

@@ -8,4 +8,8 @@ sub welcome ($self) {
   $self->render(msg => 'Welcome to the Mojolicious real-time web framework!');
 }
 
+sub health ($self) {
+    $self->render(text => 'OK', status => 200);
+}
+
 1;

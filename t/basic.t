@@ -16,4 +16,9 @@ $t->get_ok('/')
   ->element_exists('a[href="/search"]')
   ->text_is('a[href="/search"]' => 'Search');
 
+# Test health endpoint
+$t->get_ok('/health')
+  ->status_is(200)
+  ->content_is('OK');
+
 done_testing();
