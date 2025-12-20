@@ -1,6 +1,6 @@
 package MonkWorld;
 
-our $VERSION = 0.001_001;
+our $VERSION = 0.001_002;
 use v5.40;
 use Mojo::Base 'Mojolicious';
 use MonkWorld::API::Request 0.001_004; # centralize version pinning

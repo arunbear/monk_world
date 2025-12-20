@@ -20,4 +20,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8080/health || exit 1
 
 # Default command to run the application
-CMD ["hypnotoad", "-f", "script/monk_world_api"]
+CMD ["hypnotoad", "-f", "script/monk_world"]
