@@ -2,8 +2,21 @@
 % title 'Welcome';
 <h2><%= $msg %></h2>
 <p>
+  MonkWorld is a <a href="https://en.wikipedia.org/wiki/Proof_of_concept">proof of concept</a> of a new codebase for <a href="https://www.perlmonks.org">PerlMonks</a>.
+</p>
+<p>
+  It is built using
+</p>
+<ul>
+  <li>Perl 5.40</li>
+  <li>Mojolicious</li>
+  <li>PostgreSQL</li>
+</ul>
+<p>
+  <em>
   This page was generated from the template "templates/example/welcome.html.ep"
   and the layout "templates/layouts/default.html.ep",
   <%= link_to 'click here' => url_for %> to reload the page or
   <%= link_to 'here' => '/index.html' %> to move forward to a static page.
+  </em>
 </p>
